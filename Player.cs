@@ -14,7 +14,32 @@ public partial class Player : Node3D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        var movementSpeed = TimeSpan.FromMilliseconds(300);
+        ProcessPlayerMovement();
+    }
+
+    public void ProcessPlayerMovement()
+    {
+        var movementSpeed = TimeSpan.FromMilliseconds(225);
+
+        if (Input.IsActionPressed("rotate_left") && !_moving)
+        {
+            _moving = true;
+            var tween = CreateTween();
+            tween.TweenProperty(this, "rotation", Rotation + new Vector3(0, (MathF.PI / 2), 0), movementSpeed.TotalSeconds);
+            tween.TweenCallback(Callable.From(() => _moving = false));
+            tween.Play();
+            
+        }
+        
+        if (Input.IsActionPressed("rotate_right") && !_moving)
+        {
+            _moving = true;
+            var tween = CreateTween();
+            tween.TweenProperty(this, "rotation", Rotation + new Vector3(0, (MathF.PI / -2), 0), movementSpeed.TotalSeconds);
+            tween.TweenCallback(Callable.From(() => _moving = false));
+            tween.Play();
+            
+        }
 
         if (Input.IsActionPressed("forward") && !_moving)
         {
@@ -47,13 +72,9 @@ public partial class Player : Node3D
         {
             _moving = true;
             var tween = CreateTween();
-            tween.TweenProperty(this, "position", Position + Vector3.Right, movementSpeed.TotalSeconds)
-                .SetEase(Tween.EaseType.In)
-                .SetTrans(Tween.TransitionType.Sine);
-            
+            tween.TweenProperty(this, "position", Position + Vector3.Right, movementSpeed.TotalSeconds);
             tween.TweenCallback(Callable.From(() => _moving = false));
             tween.Play();
         }
-
     }
 }
