@@ -45,7 +45,7 @@ public partial class Player : Node3D
         {
             _moving = true;
             var tween = CreateTween();
-            tween.TweenProperty(this, "position", Position + Vector3.Forward, movementSpeed.TotalSeconds);
+            tween.TweenProperty(this, "position", Position + GetMovementAdjustedToRotation(Vector3.Forward), movementSpeed.TotalSeconds);
             tween.TweenCallback(Callable.From(() => _moving = false));
             tween.Play();
         }
@@ -54,7 +54,7 @@ public partial class Player : Node3D
         {
             _moving = true;
             var tween = CreateTween();
-            tween.TweenProperty(this, "position", Position + Vector3.Back, movementSpeed.TotalSeconds);
+            tween.TweenProperty(this, "position", Position + GetMovementAdjustedToRotation(Vector3.Back), movementSpeed.TotalSeconds);
             tween.TweenCallback(Callable.From(() => _moving = false));
             tween.Play();
         }
@@ -63,7 +63,7 @@ public partial class Player : Node3D
         {
             _moving = true;
             var tween = CreateTween();
-            tween.TweenProperty(this, "position", Position + Vector3.Left, movementSpeed.TotalSeconds);
+            tween.TweenProperty(this, "position", Position +GetMovementAdjustedToRotation(Vector3.Left), movementSpeed.TotalSeconds);
             tween.TweenCallback(Callable.From(() => _moving = false));
             tween.Play();
         }
@@ -72,9 +72,15 @@ public partial class Player : Node3D
         {
             _moving = true;
             var tween = CreateTween();
-            tween.TweenProperty(this, "position", Position + Vector3.Right, movementSpeed.TotalSeconds);
+            tween.TweenProperty(this, "position", Position + GetMovementAdjustedToRotation(Vector3.Right), movementSpeed.TotalSeconds);
             tween.TweenCallback(Callable.From(() => _moving = false));
             tween.Play();
         }
+    }
+
+    private Vector3 GetMovementAdjustedToRotation(Vector3 movement)
+    {
+        var rotation = Rotation.Y;
+        return movement.Rotated(Vector3.Up, rotation);
     }
 }
