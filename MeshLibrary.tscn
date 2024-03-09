@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://by37xsxy67wfj"]
+
+[ext_resource type="Texture2D" uid="uid://ue4t6pcoiu11" path="res://assets/kenney_prototype-textures/PNG/Dark/texture_01.png" id="1_mu7b5"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3co7t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6t72l"]
+albedo_texture = ExtResource("1_mu7b5")
+
+[node name="MeshLibrary" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_3co7t")
+surface_material_override/0 = SubResource("StandardMaterial3D_6t72l")
