@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://u6hwb2lmx3c2"]
 
-[ext_resource type="MeshLibrary" uid="uid://b4mv4w2ythxvb" path="res://MeshLib.tres" id="1_6g26o"]
+[ext_resource type="MeshLibrary" uid="uid://d1tndbxix0veb" path="res://MeshLib.tres" id="1_6g26o"]
 [ext_resource type="Script" path="res://Player.cs" id="2_xmifc"]
 
 [node name="Node3D" type="Node3D"]
@@ -11,7 +11,7 @@ cell_center_x = false
 cell_center_y = false
 cell_center_z = false
 data = {
-"cells": PackedInt32Array(65535, 0, 0, 65535, 65535, 0, 0, 65535, 0, 0, 0, 0, 1, 0, 0, 1, 65535, 0, 1, 1, 0, 0, 1, 0, 65535, 1, 0)
+"cells": PackedInt32Array(65535, 0, 0, 65535, 65535, 0, 0, 65535, 0, 0, 0, 0, 1, 0, 0, 1, 65535, 0, 1, 1, 0, 0, 1, 0, 65535, 1, 0, 65535, 65534, 1, 0, 65534, 1, 1, 65534, 1, 0, 65533, 1, 1, 65533, 1, 65535, 65533, 1, 65535, 65531, 1, 65535, 65532, 1, 0, 65531, 1, 0, 65532, 1, 1, 65532, 1, 1, 65531, 1)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
@@ -21,3 +21,8 @@ script = ExtResource("2_xmifc")
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.270771, 2)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.592591, 2)
+light_color = Color(0.968627, 0.760784, 0.560784, 1)
+light_energy = 2.067
